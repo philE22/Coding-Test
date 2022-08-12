@@ -19,6 +19,7 @@ public class No21 {
             }
         }
 
+
         System.out.println(result);
 
     }
