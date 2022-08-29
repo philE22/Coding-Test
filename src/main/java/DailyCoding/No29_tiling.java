@@ -1,6 +1,7 @@
 package DailyCoding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class No29_tiling {
     public static void main(String[] args) {
@@ -10,19 +11,29 @@ public class No29_tiling {
         //  1 2 3 5
         //       +2
         No29_tiling test = new No29_tiling();
-        list = new int[100];
-        System.out.println(test.fibo(4));
+
+        int num = 43;
+        ArrayList<Integer> memo = new ArrayList<>(Arrays.asList(0, 1, 2));
+        System.out.println(test.aux(num, memo) + "!!!");
+        System.out.println(test.tiling(num));
     }
 
-    static int[] list;
-    public static int fibo(int num) {
+    public int tiling(int num) {
         // TODO:
-        if (num <= 2) return num;
+        if (num == 1) return 1;
+        if (num == 2) return 2;
 
-        if (list[num]  != 0) return list[num];
 
-        return list[num] = fibo(num - 2) + fibo(num - 1);
+        return tiling(num - 2) + tiling(num - 1);
     }
+
+
+    public int aux(int size, ArrayList<Integer> memo) {
+        if(memo.size() > size) return memo.get(size);
+
+        memo.add(aux(size - 1, memo) + aux(size - 2, memo));
+        return memo.get(size);
+    };
 }
 
 
