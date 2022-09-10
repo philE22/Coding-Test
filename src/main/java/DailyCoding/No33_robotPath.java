@@ -17,7 +17,12 @@ public class No33_robotPath {
         int[] dst = new int[]{2, 2};
 
         No33_robotPath test = new No33_robotPath();
-        System.out.println(test.robotPath(room, src, dst));
+//        System.out.println(test.robotPath(room, src, dst));
+        Queue<int[]> queue = new LinkedList<int[]>();
+        System.out.println(queue.size());
+        queue.add(null);
+        System.out.println(queue.size());
+        System.out.println(queue.poll());
     }
 
 
@@ -49,9 +54,11 @@ public class No33_robotPath {
             if (xIndex != 0 && room[xIndex - 1][yIndex] == 0 && !visited[xIndex - 1][yIndex]) {
                 queue.add(new int[]{xIndex - 1, yIndex});
             }
+            queue.add(null);
 
-            timeResult++;
+            int[] poll = queue.poll();
 
+            if (poll == null) timeResult++;
 
         }
 
