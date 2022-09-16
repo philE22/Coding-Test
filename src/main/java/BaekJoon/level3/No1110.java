@@ -16,15 +16,13 @@ public class No1110 {
         int result = 0;
         int baseNum = Integer.parseInt(str);
 
-//        if (baseNum == 0) {
-//            System.out.println(1);
-//        }
-
         while (result != baseNum){
-
             String[] arr = str.split("");
-
-            int sum = Integer.parseInt(arr[0]) + Integer.parseInt(arr[arr.length - 1]);
+            int sum;
+            if (arr.length == 1) {
+                sum = Integer.parseInt(str);
+            }
+            else sum = Integer.parseInt(arr[0]) + Integer.parseInt(arr[arr.length - 1]);
 
             String[] arr1 = String.valueOf(sum).split("");
 
@@ -36,6 +34,6 @@ public class No1110 {
         }
 
         if (cycle == 0) System.out.println(1);
-        else System.out.println(cycle);
+        else System.out.print(cycle);
     }
 }
