@@ -1,5 +1,5 @@
 package Kakao.level1;
-
+//https://school.programmers.co.kr/learn/challenges?levels=1&partIds=31236%2C25448%2C20069%2C17214%2C12286%2C9317%2C22586%2C18498%2C17931&page=1&languages=java
 public class No1 { //[1차] 비밀지도
     public static void main(String[] args) {
         No1 test = new No1();
