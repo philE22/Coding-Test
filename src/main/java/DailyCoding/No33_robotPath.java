@@ -17,12 +17,7 @@ public class No33_robotPath {
         int[] dst = new int[]{2, 2};
 
         No33_robotPath test = new No33_robotPath();
-//        System.out.println(test.robotPath(room, src, dst));
-        Queue<int[]> queue = new LinkedList<int[]>();
-        System.out.println(queue.size());
-        queue.add(null);
-        System.out.println(queue.size());
-        System.out.println(queue.poll());
+        System.out.println(test.robotPath(room, src, dst));
     }
 
 
@@ -34,34 +29,36 @@ public class No33_robotPath {
         // 시간에 +1을 함
         boolean[][] visited = new boolean[room.length][room[0].length];
         int timeResult = 0;
-        int[] location = Arrays.copyOf(src, 2);
         Queue<int[]> queue = new LinkedList<>();
-        queue.add(location);
+        queue.add(src);
+        queue.add(null);
 
         while (!queue.isEmpty()) {
-            int xIndex = location[0];
-            int yIndex = location[1];
-
-            if (yIndex !=room[0].length-1 && room[xIndex][yIndex + 1] == 0 && !visited[xIndex][yIndex + 1]) {
-                queue.add(new int[]{xIndex, yIndex + 1});
-            }
-            if (yIndex != 0 && room[xIndex][yIndex - 1] == 0 && !visited[xIndex][yIndex - 1]) {
-                queue.add(new int[]{xIndex, yIndex - 1});
-            }
-            if (xIndex != room.length - 1 && room[xIndex + 1][yIndex] == 0 && !visited[xIndex + 1][yIndex]) {
-                queue.add(new int[]{xIndex + 1, yIndex});
-            }
-            if (xIndex != 0 && room[xIndex - 1][yIndex] == 0 && !visited[xIndex - 1][yIndex]) {
-                queue.add(new int[]{xIndex - 1, yIndex});
-            }
-            queue.add(null);
-
             int[] poll = queue.poll();
+            if (poll == null) {
+                timeResult++;
+                queue.add(null);
+                continue;
+            }
+            if (Arrays.equals(poll, dst)) break;    //도착지면 끝냄
+            int y = poll[0];
+            int x = poll[1];
+            visited[y][x] = true;
 
-            if (poll == null) timeResult++;
-
+            if (y + 1 < room.length && room[y + 1][x] == 0 && !visited[y + 1][x]) {
+                queue.add(new int[]{y + 1, x});
+            }
+            if (y - 1 >= 0 && room[y - 1][x] == 0 && !visited[y - 1][x]) {
+                queue.add(new int[]{y - 1, x});
+            }
+            if (x + 1 < room[y].length && room[y][x + 1] == 0 && !visited[y][x + 1]) {
+                queue.add(new int[]{y, x + 1});
+            }
+            if (x - 1 >= 0 && room[y][x - 1] == 0 && !visited[y][x - 1]) {
+                queue.add(new int[]{y, x - 1});
+            }
         }
 
-        return 0;
+        return timeResult;
     }
 }
