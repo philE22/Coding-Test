@@ -28,8 +28,6 @@ public class No3 {
         //그러면 가격이 적은 이모티콘 부터 점차 낮은 할인율을 적용
 
 
-
-
         int[] answer = {};
         return answer;
     }
