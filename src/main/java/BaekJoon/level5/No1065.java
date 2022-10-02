@@ -13,7 +13,6 @@ public class No1065 {
         for (int i = 1; i <= tiems; i++) {
             String str = String.valueOf(i);
             char[] arr = str.toCharArray();
-
             if (arr.length == 1 || arr.length == 2) {
                 count++;
                 continue;
@@ -33,7 +32,7 @@ public class No1065 {
                     break;
                 }
             }
-            if (check == true) count++;
+            if (check) count++;
         }
         System.out.println(count);
     }
