@@ -17,14 +17,17 @@ public class No10250 {
         for (int i = 0; i < times; i++) {
             String[] arr = str[i].split(" ");
             int floor = Integer.parseInt(arr[0]);
-            int room = Integer.parseInt(arr[1]);
             int client = Integer.parseInt(arr[2]);
 
             int head = client % floor;
-            int tail = (int) (client / floor) + 1;
-            if (client <= floor) head = client;
-            if (client == floor) tail = 1;
+
+            int tail = client / floor + 1;
+            if (head == 0) {
+                head = floor;
+                tail--;
+            }
             System.out.println(head * 100 + tail);
         }
+
     }
 }
