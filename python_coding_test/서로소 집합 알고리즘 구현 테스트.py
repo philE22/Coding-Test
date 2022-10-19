@@ -18,7 +18,7 @@ e, v = map(int, input().split())
 
 parent = [0] * (e + 1)
 
-#부모 테이블 초기화
+#부모 테이블 초기화zzz
 for i in range(1, e + 1):
   parent[i] = i
 
